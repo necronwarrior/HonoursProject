@@ -1,0 +1,22 @@
+print "Starting maya loading and fbx conversion \n";
+			
+if (`file -q -exists "M:/4th_Year/Honours/HonoursProject/Assets/spoder.mb"`)
+{
+	file -o "M:/4th_Year/Honours/HonoursProject/Assets/spoder.mb";
+	FBXExportEmbeddedTextures -v false;
+	// FBXExportHardEdges -v true;
+	FBXExportApplyConstantKeyReducer -v false;
+	FBXExportShowUI -v false;
+
+	print "Before fbx export\n";
+	FBXExport -f "M:/4th_Year/Honours/HonoursProject/Temp/ExportedFBXFile.fbx";
+	print "after fbx export\n";
+}
+else
+	print "Could not open Maya file.";
+
+system ("del \"M:\\4th_Year\\Honours\\HonoursProject\\Temp\\CommandPipe\"");
+
+$donepipeKill = `fopen "M:/4th_Year/Honours/HonoursProject/Temp/SyncPipeKill" "w"`;
+fwrite $donepipeKill "Done";
+fclose $donepipeKill;
