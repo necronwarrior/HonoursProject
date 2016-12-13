@@ -4,8 +4,7 @@ using System.Collections;
 public class ObstacleCreation : MonoBehaviour {
 
 	public int NumberOfObstacles;
-	float noop, froop;
-
+	public float speed = 1;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,15 +12,8 @@ public class ObstacleCreation : MonoBehaviour {
 		{
 			GameObject Obstacle = (GameObject)Instantiate (Resources.Load("Obstacle1"));
 			Obstacle.GetComponent<ObstacleMovement> ().Init (GetComponent<Terrain>().GetPosition(),
-				GetComponent<Terrain>().GetPosition()+GetComponent<Terrain>().terrainData.size);
-			noop = GetComponent<Terrain> ().GetPosition ().x;
-			froop = GetComponent<Terrain> ().terrainData.size.x;
+				GetComponent<Terrain>().GetPosition()+GetComponent<Terrain>().terrainData.size, speed);
 
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }

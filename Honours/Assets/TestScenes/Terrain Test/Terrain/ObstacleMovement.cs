@@ -5,6 +5,7 @@ public class ObstacleMovement : MonoBehaviour {
 
 	float MovementTime;
 	float OriginY;
+	float speed;
 
 	// Use this for initialization
 	void Start (){
@@ -19,12 +20,13 @@ public class ObstacleMovement : MonoBehaviour {
 			MovementTime = Time.deltaTime;
 		}
 		transform.position = new Vector3 (transform.position.x,
-			(transform.position.y + (MovementTime*Random.Range(1,5))),
+			(transform.position.y + (MovementTime*Random.Range(1,speed))),
 			transform.position.z);
 	}
 
-	public void Init (Vector3 pos, Vector3 bounds) {
+	public void Init (Vector3 pos, Vector3 bounds, float Speed) {
 
+		speed = Speed;
 		transform.position = new Vector3 (Random.Range (pos.x, bounds.x),
 			(Random.Range (pos.y, bounds.y)/12f),
 			Random.Range (pos.z, bounds.z));

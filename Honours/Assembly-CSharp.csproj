@@ -49,9 +49,9 @@
      <Compile Include="Assets\TestScenes\IK Test\IK\FABRIK.cs" />
      <Compile Include="Assets\TestScenes\IK Test\IK\IKChain.cs" />
      <Compile Include="Assets\TestScenes\IK Test\IK\IKJoint.cs" />
-     <Compile Include="Assets\TestScenes\Terrain Test\ObstacleCreation.cs" />
-     <Compile Include="Assets\TestScenes\Terrain Test\ObstacleMovement.cs" />
-     <Compile Include="Assets\TestScenes\Terrain Test\ProceduralTerrain.cs" />
+     <Compile Include="Assets\TestScenes\Terrain Test\Terrain\ObstacleCreation.cs" />
+     <Compile Include="Assets\TestScenes\Terrain Test\Terrain\ObstacleMovement.cs" />
+     <Compile Include="Assets\TestScenes\Terrain Test\Terrain\ProceduralTerrain.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
