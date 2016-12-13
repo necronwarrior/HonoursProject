@@ -9,7 +9,7 @@ using System.Collections;
 public class FABRIK : MonoBehaviour 
 {
 	public IKChain myChain;
-	
+	Vector3 noo,  doo;
 	// 15 iterations is average solve time
  	const int Max_iterations = 20;		
 	const float Solve_accuracy = 0.2f; 
@@ -46,7 +46,8 @@ public class FABRIK : MonoBehaviour
 			int tries = 0;
 			
 			Vector3 rootInitial = chain.joints[0].position;
-			
+			Vector3 tempos;
+
 			float targetDelta = Dist(chain.joints[chain.joints.Length-1].position, chain.target.position);
 			
 			while(targetDelta > Solve_accuracy && tries < Max_iterations)
@@ -57,9 +58,17 @@ public class FABRIK : MonoBehaviour
 				
 				for (int i = chain.joints.Length - 2; i > 0; i--)
 				{
+
 					//returning from the target
-					lambda = chain.segmentLengths[i] / Dist(chain.joints[i+1].position, chain.joints[i].position);		
-					chain.joints[i].position = (1 - lambda) * chain.joints[i+1].position + lambda * chain.joints[i].position;				
+					lambda = chain.segmentLengths[i] / Dist(chain.joints[i+1].position, chain.joints[i].position);
+					tempos = (1 - lambda) * chain.joints[i+1].position + lambda * chain.joints[i].position;
+					noo = chain.joints [i+1].position;
+					doo = tempos;
+
+					if (Mathf.Pow(tempos.x - chain.joints [i + 1].position.x,2.0f) + Mathf.Pow(tempos.y - chain.joints [i + 1].position.y,2.0f) > Mathf.Pow(chain.joints [i + 1].constraintsMax.x,2.0f)) 
+					{
+						chain.joints [i].position = tempos;	
+					}		
 				}
 				
 				
@@ -67,11 +76,16 @@ public class FABRIK : MonoBehaviour
 				
 				chain.joints[0].position = rootInitial;
 				
-				for (int i = 0; i < chain.joints.Length - 1; i++)
-				{
+				for (int i = 0; i < chain.joints.Length - 1; i++) {
 					//returning from the base
-					lambda = chain.segmentLengths[i] / Dist(chain.joints[i+1].position, chain.joints[i].position);
-					chain.joints[i+1].position = (1 - lambda) * chain.joints[i].position + lambda * chain.joints[i+1].position;				
+					lambda = chain.segmentLengths [i] / Dist (chain.joints [i + 1].position, chain.joints [i].position);
+
+					tempos = (1 - lambda) * chain.joints [i].position + lambda * chain.joints [i + 1].position;	
+					if (Mathf.Pow(tempos.x - chain.joints [i].position.x,2.0f) + Mathf.Pow(tempos.y - chain.joints [i].position.y,2.0f) > Mathf.Pow(chain.joints [i].constraintsMax.x, 2.0f))
+					{
+						chain.joints [i + 1].position = (1 - lambda) * chain.joints [i].position + lambda * chain.joints [i + 1].position;				
+				
+					}
 				}
 
 				//recalculate the distance from the target
@@ -85,5 +99,10 @@ public class FABRIK : MonoBehaviour
 	float Dist(Vector3 a, Vector3 b)
 	{
 		return (a-b).magnitude;
+	}
+
+	void OnDrawGizmos()
+	{
+		DebugExtension.DrawCone(noo, doo, Color.blue);
 	}
 }

@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
-public class IKRigJoint
+public class IKRigJoint : MonoBehaviour
 {
 	//base Unity transform
 	public Transform root;
@@ -14,11 +13,8 @@ public class IKRigJoint
 	}
 
 	//constraints for leg movement
-	public Vector3 constraintsMax
-	{
-		get{ return constraintsMax;}
-		set{ constraintsMax = value;}
-	}
+	public Vector3 constraintsMax;
+
 
 	public Vector3 constraintsMin
 	{

@@ -4,11 +4,12 @@ using System.Collections;
 [System.Serializable]
 public class IKChain
 {
+
 	//list of joints to be populated
-	public Transform[] joints;
+	public IKRigJoint[] joints;
 
 	//target point for the solution to aim for (foot)
-	public Transform target;
+	public IKRigJoint target;
 
 	//these variables will not show in the inspector, however we want them to be accessed publicly
 	[System.NonSerialized]
@@ -18,7 +19,7 @@ public class IKChain
 	public float length;
 	
 	//use simple transforms for making the basics of the IK solver
-	public IKChain(Transform[] Joints, Transform Target)
+	public IKChain(IKRigJoint[] Joints, IKRigJoint Target)
 	{
 		joints = Joints;
 		target = Target;
