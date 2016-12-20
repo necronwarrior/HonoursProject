@@ -63,7 +63,7 @@ public class FABRIK : MonoBehaviour
 					lambda = chain.segmentLengths[i] / Dist(chain.joints[i+1].position, chain.joints[i].position);
 					tempos = (1 - lambda) * chain.joints[i+1].position + lambda * chain.joints[i].position;
 					noo = chain.joints [i+1].position;
-					doo = tempos;
+					doo = chain.joints[i].position;
 
 					if (Mathf.Pow(tempos.x - chain.joints [i + 1].position.x,2.0f) + Mathf.Pow(tempos.y - chain.joints [i + 1].position.y,2.0f) > Mathf.Pow(chain.joints [i + 1].constraintsMax.x,2.0f)) 
 					{
@@ -81,6 +81,8 @@ public class FABRIK : MonoBehaviour
 					lambda = chain.segmentLengths [i] / Dist (chain.joints [i + 1].position, chain.joints [i].position);
 
 					tempos = (1 - lambda) * chain.joints [i].position + lambda * chain.joints [i + 1].position;	
+
+
 					if (Mathf.Pow(tempos.x - chain.joints [i].position.x,2.0f) + Mathf.Pow(tempos.y - chain.joints [i].position.y,2.0f) > Mathf.Pow(chain.joints [i].constraintsMax.x, 2.0f))
 					{
 						chain.joints [i + 1].position = (1 - lambda) * chain.joints [i].position + lambda * chain.joints [i + 1].position;				

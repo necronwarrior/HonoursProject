@@ -69,13 +69,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Resources\DebugDrawingExtension\DebugExtension.cs" />
     <Compile Include="Assets\TestScenes\BasicMovement.cs" />
     <Compile Include="Assets\TestScenes\IK Test\IK\FABRIK.cs" />
     <Compile Include="Assets\TestScenes\IK Test\IK\IKChain.cs" />
-    <Compile Include="Assets\TestScenes\IK Test\IK\IKJoint.cs" />
+    <Compile Include="Assets\TestScenes\IK Test\IK\IKRigJoint.cs" />
     <Compile Include="Assets\TestScenes\Terrain Test\Terrain\ObstacleCreation.cs" />
     <Compile Include="Assets\TestScenes\Terrain Test\Terrain\ObstacleMovement.cs" />
     <Compile Include="Assets\TestScenes\Terrain Test\Terrain\ProceduralTerrain.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\DebugDrawingExtension\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

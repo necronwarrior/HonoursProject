@@ -24,7 +24,7 @@ public class ObstacleMovement : MonoBehaviour {
 			transform.position.z);
 	}
 
-	public void Init (Vector3 pos, Vector3 bounds, float Speed) {
+	public void RandInit (Vector3 pos, Vector3 bounds, float Speed) {
 
 		speed = Speed;
 		transform.position = new Vector3 (Random.Range (pos.x, bounds.x),
@@ -34,6 +34,16 @@ public class ObstacleMovement : MonoBehaviour {
 		transform.localScale = new Vector3 (Random.Range (1, 10),
 			Random.Range (1, 10),
 			Random.Range (1, 10));
+
+		OriginY = transform.position.y;
+	}
+
+	public void ControlledInit (Vector3 pos, float scale) {
+
+		speed = 1;
+		transform.position = new Vector3 (pos.x,pos.y,pos.z);
+
+		transform.localScale = new Vector3 (scale,scale,scale);
 
 		OriginY = transform.position.y;
 	}
