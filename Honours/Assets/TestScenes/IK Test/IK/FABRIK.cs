@@ -27,9 +27,11 @@ public class FABRIK : MonoBehaviour
 
 	void Solve(IKChain chain)
 	{
+		noo = chain.joints [1].root.position;
+		doo = noo - chain.joints [0].root.position;
 		if(chain.joints.Length < 2) return;
 	
-		float rootToTargetDist = Dist(chain.joints[0].position, chain.target.position);
+		float rootToTargetDist = Vector3.Distance(chain.joints[0].position, chain.target.position);
 		float lambda = 0f;
 		
 		// Target unreachable
@@ -37,7 +39,7 @@ public class FABRIK : MonoBehaviour
 		{
 			for (int i = 0; i < chain.joints.Length - 1; i++)
 			{
-				lambda = chain.segmentLengths[i] / Dist(chain.joints[i].position, chain.target.position);
+				lambda = chain.segmentLengths[i] / Vector3.Distance(chain.joints[i].position, chain.target.position);
 				chain.joints[i+1].position = (1 - lambda) * chain.joints[i].position + lambda * chain.target.position;
 			}
 		}
@@ -48,7 +50,7 @@ public class FABRIK : MonoBehaviour
 			Vector3 rootInitial = chain.joints[0].position;
 			Vector3 tempos;
 
-			float targetDelta = Dist(chain.joints[chain.joints.Length-1].position, chain.target.position);
+			float targetDelta = Vector3.Distance(chain.joints[chain.joints.Length-1].position, chain.target.position);
 			
 			while(targetDelta > Solve_accuracy && tries < Max_iterations)
 			{
@@ -60,12 +62,10 @@ public class FABRIK : MonoBehaviour
 				{
 
 					//returning from the target
-					lambda = chain.segmentLengths[i] / Dist(chain.joints[i+1].position, chain.joints[i].position);
+					lambda = chain.segmentLengths[i] / Vector3.Distance(chain.joints[i+1].position, chain.joints[i].position);
 					tempos = (1 - lambda) * chain.joints[i+1].position + lambda * chain.joints[i].position;
-					noo = chain.joints [i+1].position;
-					doo = chain.joints[i].position;
 
-					if (Mathf.Pow(tempos.x - chain.joints [i + 1].position.x,2.0f) + Mathf.Pow(tempos.y - chain.joints [i + 1].position.y,2.0f) > Mathf.Pow(chain.joints [i + 1].constraintsMax.x,2.0f)) 
+				
 					{
 						chain.joints [i].position = tempos;	
 					}		
@@ -78,12 +78,12 @@ public class FABRIK : MonoBehaviour
 				
 				for (int i = 0; i < chain.joints.Length - 1; i++) {
 					//returning from the base
-					lambda = chain.segmentLengths [i] / Dist (chain.joints [i + 1].position, chain.joints [i].position);
+					lambda = chain.segmentLengths [i] / Vector3.Distance (chain.joints [i + 1].position, chain.joints [i].position);
 
 					tempos = (1 - lambda) * chain.joints [i].position + lambda * chain.joints [i + 1].position;	
 
 
-					if (Mathf.Pow(tempos.x - chain.joints [i].position.x,2.0f) + Mathf.Pow(tempos.y - chain.joints [i].position.y,2.0f) > Mathf.Pow(chain.joints [i].constraintsMax.x, 2.0f))
+					//if ()
 					{
 						chain.joints [i + 1].position = (1 - lambda) * chain.joints [i].position + lambda * chain.joints [i + 1].position;				
 				
@@ -91,16 +91,47 @@ public class FABRIK : MonoBehaviour
 				}
 
 				//recalculate the distance from the target
-				targetDelta = Dist(chain.joints[chain.joints.Length-1].position, chain.target.position);
+				targetDelta = Vector3.Distance(chain.joints[chain.joints.Length-1].position, chain.target.position);
 				tries++;
 			}
 		}
 	}
+		
+	bool isLyingInCone(Vector3 point, Vector3 apex, Vector3 centre, 
+		float aperture){
 
-	//for readability
-	float Dist(Vector3 a, Vector3 b)
-	{
-		return (a-b).magnitude;
+		// This is for our convenience
+		float halfAperture = aperture/2.0f;
+
+		// Vector pointing to X point from apex
+		Vector3 apexToXVect = (apex-point);
+
+		// Vector pointing from apex to circle-center point.
+		Vector3 axisVect = (apex-centre);
+
+		// X is lying in cone only if it's lying in 
+		// infinite version of its cone -- that is, 
+		// not limited by "round basement".
+		// We'll use dotProd() to 
+		// determine angle between apexToXVect and axis.
+		bool isInInfiniteCone = Vector3.Dot(apexToXVect,axisVect)
+			/apexToXVect.magnitude/axisVect.magnitude
+			>
+			// We can safely compare cos() of angles 
+			// between vectors instead of bare angles.
+			Mathf.Cos(halfAperture);
+
+
+		if(!isInInfiniteCone) return false;
+
+		// X is contained in cone only if projection of apexToXVect to axis
+		// is shorter than axis. 
+		// We'll use dotProd() to figure projection length.
+		bool isUnderRoundCap = Vector3.Dot(apexToXVect,axisVect)
+			/axisVect.magnitude
+			<
+			axisVect.magnitude;
+		return isUnderRoundCap;
 	}
 
 	void OnDrawGizmos()

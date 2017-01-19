@@ -13,12 +13,12 @@ public class IKRigJoint : MonoBehaviour
 	}
 
 	//constraints for leg movement
-	public Vector3 constraintsMax;
+	public Vector4 constraintsVal;
 
 
-	public Vector3 constraintsMin
+	public Vector4 constraints
 	{
-		get{ return constraintsMin;}
-		set{ constraintsMin = value;}
+		get{ return constraintsVal;}
+		set{ constraintsVal = value;}
 	}
 }
