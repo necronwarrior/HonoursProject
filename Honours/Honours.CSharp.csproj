@@ -74,6 +74,7 @@
     <Compile Include="Assets\TestScenes\IK Test\IK\FABRIK.cs" />
     <Compile Include="Assets\TestScenes\IK Test\IK\IKChain.cs" />
     <Compile Include="Assets\TestScenes\IK Test\IK\IKRigJoint.cs" />
+    <Compile Include="Assets\TestScenes\IK Test\testmove.cs" />
     <Compile Include="Assets\TestScenes\Terrain Test\Terrain\ObstacleCreation.cs" />
     <Compile Include="Assets\TestScenes\Terrain Test\Terrain\ObstacleMovement.cs" />
     <Compile Include="Assets\TestScenes\Terrain Test\Terrain\ProceduralTerrain.cs" />
