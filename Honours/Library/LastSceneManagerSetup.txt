@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/TestScenes/IK Test/IK Scene.unity
+- path: Assets/TestScenes/Spider Scene/Spider Scene.unity
   isLoaded: 1
   isActive: 1

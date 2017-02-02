@@ -120,6 +120,11 @@ public class FABRIK : MonoBehaviour
 				targetDelta = Vector3.Distance(chain.joints[chain.joints.Length-1].position, chain.target.position);
 				tries++;
 			}
+
+            for (int i = chain.joints.Length-1; i>1;i--)
+            {
+				chain.joints[i].gameObject.transform.LookAt(chain.joints[i-1].position);
+            }
 		}
 	}
 		
