@@ -8,8 +8,10 @@ using System.Collections;
 
 public class FABRIK : MonoBehaviour 
 {
+	Vector3[] Fwd, Bwd, noo,  doo; 
+	Color debug;
+	bool cones = false;
 	public IKChain myChain;
-	Vector3 noo,  doo;
 	// 15 iterations is average solve time
  	const int Max_iterations = 20;		
 	const float Solve_accuracy = 0.2f; 
@@ -17,6 +19,14 @@ public class FABRIK : MonoBehaviour
 	void Start()
 	{
 		myChain.Init();
+		Fwd = new Vector3[myChain.joints.Length];
+		Bwd = new Vector3[myChain.joints.Length];
+		noo = new Vector3[myChain.joints.Length];
+		doo = new Vector3[myChain.joints.Length];
+		noo [1] = new Vector3 (0, 0, 0);
+		doo [1] = new Vector3 (0, 0, 0);
+		debug = Color.white;
+		cones = true;
 	}
 	
 	void Update()
@@ -27,8 +37,6 @@ public class FABRIK : MonoBehaviour
 
 	void Solve(IKChain chain)
 	{
-		noo = chain.joints [1].root.position;
-		doo = noo - chain.joints [0].root.position;
 		if(chain.joints.Length < 2) return;
 	
 		float rootToTargetDist = Vector3.Distance(chain.joints[0].position, chain.target.position);
@@ -65,28 +73,46 @@ public class FABRIK : MonoBehaviour
 					lambda = chain.segmentLengths[i] / Vector3.Distance(chain.joints[i+1].position, chain.joints[i].position);
 					tempos = (1 - lambda) * chain.joints[i+1].position + lambda * chain.joints[i].position;
 
-				
+					//if(isLyingInCone(tempos,chain.joints[i+1].position,chain.joints [i].position, chain.joints[i+1].aperture))
 					{
 						chain.joints [i].position = tempos;	
-					}		
+						Fwd [i] = chain.joints [i].position;
+					}/// else {
+						//chain.joints [i].position = Fwd [i];
+					//}	
 				}
 				
 				
 				// Backward reaching phase
 				
 				chain.joints[0].position = rootInitial;
-				
-				for (int i = 0; i < chain.joints.Length - 1; i++) {
+
+				for (int i = 0; i < chain.joints.Length -1; i++) {
 					//returning from the base
+
 					lambda = chain.segmentLengths [i] / Vector3.Distance (chain.joints [i + 1].position, chain.joints [i].position);
 
 					tempos = (1 - lambda) * chain.joints [i].position + lambda * chain.joints [i + 1].position;	
 
+					noo [i] = chain.joints [i].position;
+					GameObject doott = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
 
-					//if ()
-					{
-						chain.joints [i + 1].position = (1 - lambda) * chain.joints [i].position + lambda * chain.joints [i + 1].position;				
-				
+					doo [i] = chain.joints [i].position+(chain.joints [i].position - chain.joints [i].pos)*2;
+
+					doott.transform.position = doo [i];
+					Debug.Log(doo[i]);
+					if (isLyingInCone (tempos, chain.joints [i].position, (doo [i])*2, (Mathf.Deg2Rad*chain.joints [i].aperture))) {
+						
+						chain.joints [i + 1].position =tempos;				
+						Bwd [i] = chain.joints [i + 1].position;
+						debug = Color.blue;
+					} else {
+						chain.joints [i + 1].position = Bwd [i];
+						chain.joints [i + 1].position =tempos;
+						//chain.joints [i + 1].position =tempos;	
+						//GameObject doo = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
+						//doo.transform.position = tempos;
+						debug = Color.red;
 					}
 				}
 
@@ -136,6 +162,12 @@ public class FABRIK : MonoBehaviour
 
 	void OnDrawGizmos()
 	{
-		DebugExtension.DrawCone(noo, doo, Color.blue);
+		if (cones==true)
+		{
+		//DebugExtension.DrawCone(noo[0] ,doo[0], Color.blue,45);
+		DebugExtension.DrawCone(noo[0] ,doo[0], debug,22);
+		DebugExtension.DrawCone(noo[1] ,doo[1], debug,22);
+		DebugExtension.DrawCone(noo[2] ,doo[2], debug,22);
+		}
 	}
 }
