@@ -123,7 +123,7 @@ public class FABRIK : MonoBehaviour
 
             for (int i = chain.joints.Length-1; i>1;i--)
             {
-				chain.joints[i].gameObject.transform.LookAt(chain.joints[i-1].position);
+				chain.joints[i].gameObject.transform.LookAt((chain.joints[i-1].gameObject.transform.position));
             }
 		}
 	}
