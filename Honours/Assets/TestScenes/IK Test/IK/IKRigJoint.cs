@@ -8,6 +8,8 @@ public class IKRigJoint : MonoBehaviour
 
 	public Transform constraintdir;
 
+	public Vector3 RotOff;
+
 	public Vector3 position
 	{
 		get{ return root.position; }
@@ -20,14 +22,18 @@ public class IKRigJoint : MonoBehaviour
 		set{ constraintdir.position = value; }
 	}
 
-	//constraints for leg movement
-	public Vector4 constraintsVal;
-
 	public float aperture =45; 
 
-	public Vector4 constraints
+	bool noot;
+
+	void Awake()
 	{
-		get{ return constraintsVal;}
-		set{ constraintsVal = value;}
+		//RotOff = new Vector3 (0,0,0);
+
+	}
+
+	public void Straighten() {
+		transform.LookAt (pos);
+		transform.Rotate (RotOff);
 	}
 }
