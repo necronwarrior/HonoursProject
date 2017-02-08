@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Resources\DebugDrawingExtension\DebugExtension.cs" />
+     <Compile Include="Assets\TestParabolamaker.cs" />
      <Compile Include="Assets\TestScenes\BasicMovement.cs" />
      <Compile Include="Assets\TestScenes\IK Test\IK\FABRIK.cs" />
      <Compile Include="Assets\TestScenes\IK Test\IK\IKChain.cs" />

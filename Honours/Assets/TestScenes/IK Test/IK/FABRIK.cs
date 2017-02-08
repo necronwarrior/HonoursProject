@@ -95,12 +95,12 @@ public class FABRIK : MonoBehaviour
 					tempos = (1 - lambda) * chain.joints [i].position + lambda * chain.joints [i + 1].position;	
 
 					noo [i] = chain.joints [i].position;
-					GameObject doott = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
+					//GameObject doott = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
 
 					doo [i] = chain.joints [i].position+(chain.joints [i].position - chain.joints [i].pos)*2;
 
-					doott.transform.position = doo [i];
-					Debug.Log(doo[i]);
+					//doott.transform.position = doo [i];
+					//Debug.Log(doo[i]);
 					if (isLyingInCone (tempos, chain.joints [i].position, (doo [i])*2, (Mathf.Deg2Rad*chain.joints [i].aperture))) {
 						
 						chain.joints [i + 1].position =tempos;				
@@ -170,9 +170,9 @@ public class FABRIK : MonoBehaviour
 		if (cones==true)
 		{
 		//DebugExtension.DrawCone(noo[0] ,doo[0], Color.blue,45);
-		DebugExtension.DrawCone(noo[0] ,doo[0], debug,22);
-		DebugExtension.DrawCone(noo[1] ,doo[1], debug,22);
-		DebugExtension.DrawCone(noo[2] ,doo[2], debug,22);
+		//DebugExtension.DrawCone(noo[0] ,doo[0], debug,22);
+		//DebugExtension.DrawCone(noo[1] ,doo[1], debug,22);
+	//	DebugExtension.DrawCone(noo[2] ,doo[2], debug,22);
 		}
 	}
 }
