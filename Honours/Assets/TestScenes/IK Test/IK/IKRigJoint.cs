@@ -34,6 +34,7 @@ public class IKRigJoint : MonoBehaviour
 
 	public void Straighten() {
 		transform.LookAt (pos);
+
 		transform.Rotate (RotOff);
 	}
 }
