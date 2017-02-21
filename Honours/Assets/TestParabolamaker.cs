@@ -39,6 +39,7 @@ public class TestParabolamaker : MonoBehaviour {
 	{
 		//TargetStruct[index].ParabolaHeight = (TargetStruct[index].OldTargets +(TargetStruct[index].OldTargets-TargetStruct[index].NewTargets))*0.5f;
 		//TargetStruct [index].ParabolaHeight += TargetStruct [index].Maintransform.up * 3.0f;
+
 		if (TargetStruct [index].LerpTimer < 1.0f) {
 			float height = Mathf.Sin (Mathf.PI * TargetStruct [index].LerpTimer) * 30.0f;
 

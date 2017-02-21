@@ -31,7 +31,7 @@ public class ObstacleCreation : MonoBehaviour {
 			{
 				if (ObjectBitmap.GetPixel (i, j).linear == Color.black) {
 					GameObject Obstacle = (GameObject)Instantiate (Resources.Load ("Obstacle1"));
-					Obstacle.GetComponent<ObstacleMovement> ().ControlledInit (new Vector3(i,0.0f, j),1.0f);
+					Obstacle.GetComponent<ObstacleMovement> ().ControlledInit (new Vector3(i,10.0f, j),1.0f);
 				}
 			}
 		}

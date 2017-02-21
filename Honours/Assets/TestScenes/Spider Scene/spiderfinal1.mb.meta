@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a98333b32e81e7f408f484a4674e6f28
-timeCreated: 1486037883
+timeCreated: 1487610286
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -41,41 +41,17 @@ ModelImporter:
     100066: Box36
     100068: Box37
     100070: Box38
-    100072: Dummy01
-    100074: Dummy02
-    100076: Dummy03
-    100078: Dummy04
-    100080: Dummy07
-    100082: Dummy08
-    100084: Dummy09
-    100086: Dummy10
-    100088: Dummy11
-    100090: Dummy12
-    100092: Dummy13
-    100094: Dummy14
-    100096: Dummy15
-    100098: Dummy16
-    100100: Dummy17
-    100102: Dummy18
-    100104: Dummy19
-    100106: IK Chain01
-    100108: IK Chain02
-    100110: IK Chain03
-    100112: IK Chain04
-    100114: IK Chain05
-    100116: IK Chain06
-    100118: IK Chain07
-    100120: IK Chain08
-    100122: IK Chain09
-    100124: IK Chain10
-    100126: IK Chain11
-    100128: IK Chain12
-    100130: IK Chain13
-    100132: IK Chain14
-    100134: IK Chain15
-    100136: IK Chain16
-    100138: Spider01
-    100140: //RootNode
+    100072: Dummy02
+    100074: Dummy03
+    100076: Dummy04
+    100078: Dummy07
+    100080: Dummy08
+    100082: Dummy09
+    100084: Dummy10
+    100086: Dummy11
+    100088: Dummy12
+    100090: Spider01
+    100092: //RootNode
     400000: Box01
     400002: Box02
     400004: Box03
@@ -112,46 +88,21 @@ ModelImporter:
     400066: Box36
     400068: Box37
     400070: Box38
-    400072: Dummy01
-    400074: Dummy02
-    400076: Dummy03
-    400078: Dummy04
-    400080: Dummy07
-    400082: Dummy08
-    400084: Dummy09
-    400086: Dummy10
-    400088: Dummy11
-    400090: Dummy12
-    400092: Dummy13
-    400094: Dummy14
-    400096: Dummy15
-    400098: Dummy16
-    400100: Dummy17
-    400102: Dummy18
-    400104: Dummy19
-    400106: IK Chain01
-    400108: IK Chain02
-    400110: IK Chain03
-    400112: IK Chain04
-    400114: IK Chain05
-    400116: IK Chain06
-    400118: IK Chain07
-    400120: IK Chain08
-    400122: IK Chain09
-    400124: IK Chain10
-    400126: IK Chain11
-    400128: IK Chain12
-    400130: IK Chain13
-    400132: IK Chain14
-    400134: IK Chain15
-    400136: IK Chain16
-    400138: Spider01
-    400140: //RootNode
+    400072: Dummy02
+    400074: Dummy03
+    400076: Dummy04
+    400078: Dummy07
+    400080: Dummy08
+    400082: Dummy09
+    400084: Dummy10
+    400086: Dummy11
+    400088: Dummy12
+    400090: Spider01
+    400092: //RootNode
     2300000: Box04
     3300000: Box04
     4300000: Spider01
     4300002: Box04
-    6400000: Box04
     7400000: Take 001
     9500000: //RootNode
     13700000: Spider01
@@ -162,7 +113,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleRotations: 1
+    resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
@@ -181,12 +132,12 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 1
+    addColliders: 0
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 0
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
@@ -201,6 +152,7 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -211,7 +163,10 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1

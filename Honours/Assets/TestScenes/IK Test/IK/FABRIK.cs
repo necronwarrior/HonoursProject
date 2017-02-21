@@ -15,6 +15,7 @@ public class FABRIK : MonoBehaviour
 	// 15 iterations is average solve time
  	const int Max_iterations = 20;		
 	const float Solve_accuracy = 0.2f; 
+	float[] foo;
 
 	void Start()
 	{
@@ -23,8 +24,7 @@ public class FABRIK : MonoBehaviour
 		Bwd = new Vector3[myChain.joints.Length];
 		noo = new Vector3[myChain.joints.Length];
 		doo = new Vector3[myChain.joints.Length];
-		noo [1] = new Vector3 (0, 0, 0);
-		doo [1] = new Vector3 (0, 0, 0);
+		foo = new float[myChain.joints.Length];
 		debug = Color.white;
 		cones = true;
 	}
@@ -32,11 +32,29 @@ public class FABRIK : MonoBehaviour
 	void Update()
 	{
 		Solve(myChain);
-		myChain.DebugDraw(Color.cyan);
+		//myChain.DebugDraw(Color.cyan);
+
+		//if (myChain.joints [0].name == "L1Hip") {
+			noo [0] = myChain.joints [0].position;
+			noo [1] = myChain.joints [1].position;
+			noo [2] = myChain.joints [2].position;
+			doo [0] = (myChain.joints [0].pos - myChain.joints [0].position);
+			doo [1] = (myChain.joints [1].pos - myChain.joints [1].position);
+			doo [2] = (myChain.joints [2].pos - myChain.joints [2].position);
+			doo [0].Normalize ();
+			doo [1].Normalize ();
+			doo [2].Normalize ();
+			foo [0] = myChain.joints [0].aperture;
+			foo [1] = myChain.joints [1].aperture;
+			foo [2] = myChain.joints [2].aperture;
+		//}
 	}
 
 	void Solve(IKChain chain)
 	{
+
+
+
 		if(chain.joints.Length < 2) return;
 	
 		float rootToTargetDist = Vector3.Distance(chain.joints[0].position, chain.target.position);
@@ -123,7 +141,7 @@ public class FABRIK : MonoBehaviour
 
 			for (int i = 1; i<chain.joints.Length;i++)
             {
-				chain.joints [i].Straighten ();
+				chain.joints [i].Straighten (chain.joints [i-1].position);
             }
 		}
 	}
@@ -169,10 +187,9 @@ public class FABRIK : MonoBehaviour
 	{
 		if (cones==true)
 		{
-		//DebugExtension.DrawCone(noo[0] ,doo[0], Color.blue,45);
-		//DebugExtension.DrawCone(noo[0] ,doo[0], debug,22);
-		//DebugExtension.DrawCone(noo[1] ,doo[1], debug,22);
-	//	DebugExtension.DrawCone(noo[2] ,doo[2], debug,22);
+			//DebugExtension.DrawCone(noo[0] ,doo[0]*100, Color.white,foo[0]);
+			//DebugExtension.DrawCone(noo[1] ,doo[1]*100, Color.cyan,foo[1]);
+			//DebugExtension.DrawCone(noo[2] ,doo[2]*100, Color.gray,foo[2]);
 		}
 	}
 }
