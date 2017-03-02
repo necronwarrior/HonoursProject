@@ -16,6 +16,7 @@ public class FABRIK : MonoBehaviour
  	const int Max_iterations = 20;		
 	const float Solve_accuracy = 0.2f; 
 	float[] foo;
+	public int noodle;
 
 	void Start()
 	{
@@ -98,6 +99,7 @@ public class FABRIK : MonoBehaviour
 					}/// else {
 						//chain.joints [i].position = Fwd [i];
 					//}	
+					Vector3.Lerp (chain.joints [i + 1].position, chain.joints [i + 1].pos, 1.0f);
 				}
 				
 				
@@ -132,6 +134,7 @@ public class FABRIK : MonoBehaviour
 						//doo.transform.position = tempos;
 						debug = Color.red;
 					}
+					Vector3.Lerp (chain.joints [i + 1].position, chain.joints [i + 1].pos, 1.0f);
 				}
 
 				//recalculate the distance from the target
@@ -185,11 +188,11 @@ public class FABRIK : MonoBehaviour
 
 	void OnDrawGizmos()
 	{
-		if (cones==true)
+		if (cones==true && noodle==1)
 		{
-			//DebugExtension.DrawCone(noo[0] ,doo[0]*100, Color.white,foo[0]);
-			//DebugExtension.DrawCone(noo[1] ,doo[1]*100, Color.cyan,foo[1]);
-			//DebugExtension.DrawCone(noo[2] ,doo[2]*100, Color.gray,foo[2]);
+			DebugExtension.DrawCone(noo[0] ,doo[0]*100, Color.white,foo[0]);
+			DebugExtension.DrawCone(noo[1] ,doo[1]*100, Color.cyan,foo[1]);
+			DebugExtension.DrawCone(noo[2] ,doo[2]*100, Color.gray,foo[2]);
 		}
 	}
 }

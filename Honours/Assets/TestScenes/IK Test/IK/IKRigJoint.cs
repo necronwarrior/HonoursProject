@@ -11,6 +11,7 @@ public class IKRigJoint : MonoBehaviour
 	GameObject realdir;
 
 	public Vector3 RotOff;
+	public Vector3 localrot;
 
 	public Quaternion Quat;
 
@@ -36,6 +37,7 @@ public class IKRigJoint : MonoBehaviour
 		once = true;
 		Quat = new Quaternion();
 		realdir = new GameObject ();
+
 	}
 
 	public void Straighten(Vector3 Prev) {
@@ -51,10 +53,13 @@ public class IKRigJoint : MonoBehaviour
 			once = false;
 		}
 		realdir.transform.LookAt (Prev);
+		localrot = transform.localRotation.eulerAngles ;
 		transform.localRotation = realdir.transform.rotation;
 
 		//transform.forward = transform.position - Prev;
 		Debug.DrawLine( transform.position, Prev, Color.blue);
+
+	
 		//transform.rotation = ToPrev;
 
 		//transform.Rotate (-RotOff);

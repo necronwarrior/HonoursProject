@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Resources\DebugDrawingExtension\DebugExtension.cs" />
-     <Compile Include="Assets\TestParabolamaker.cs" />
+     <Compile Include="Assets\Resources\SplineController_CS\MathUtils.cs" />
+     <Compile Include="Assets\Resources\SplineController_CS\SplineController.cs" />
+     <Compile Include="Assets\Resources\SplineController_CS\SplineInterpolator.cs" />
      <Compile Include="Assets\TestScenes\BasicMovement.cs" />
      <Compile Include="Assets\TestScenes\IK Test\IK\FABRIK.cs" />
      <Compile Include="Assets\TestScenes\IK Test\IK\IKChain.cs" />
@@ -56,6 +58,8 @@
      <Compile Include="Assets\TestScenes\Terrain Test\Terrain\ObstacleCreation.cs" />
      <Compile Include="Assets\TestScenes\Terrain Test\Terrain\ObstacleMovement.cs" />
      <Compile Include="Assets\TestScenes\Terrain Test\Terrain\ProceduralTerrain.cs" />
+     <Compile Include="Assets\TestScenes\TestHermiteBuilder.cs" />
+     <Compile Include="Assets\TestScenes\TestParabolamaker.cs" />
      <None Include="Assets\Resources\DebugDrawingExtension\readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity5.5.1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
