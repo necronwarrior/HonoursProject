@@ -19,11 +19,11 @@ public class TestParabolamaker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		MainBody = transform.parent;
 		TargetStruct = new TargetMovement[8];
-		MainBody = transform.parent.GetChild (0);
 		for (int i=0;i<8;i++) {
 			TargetStruct[i].Maintransform = transform.GetChild (i);
-			TargetStruct [i].OldTargets = transform.GetChild (i).position;
+			TargetStruct [i].OldTargets = TargetStruct[i].Maintransform.localPosition -(MainBody.forward*50.0f) ;
 			ResetMove (i);
 		}
 		noop= true;
@@ -31,10 +31,9 @@ public class TestParabolamaker : MonoBehaviour {
 
 	void ResetMove(int i)
 	{
-		TargetStruct [i].Maintransform.position = TargetStruct [i].OldTargets;
-
-		TargetStruct[i].NewTargets = new Vector3 (TargetStruct[i].Maintransform.position.x, TargetStruct[i].Maintransform.position.y, TargetStruct[i].Maintransform.position.z + 100);
-		//TargetStruct[i].OldTargets = TargetStruct[i].Maintransform.position;
+		TargetStruct [i].Maintransform.localPosition = TargetStruct [i].OldTargets;
+		TargetStruct [i].NewTargets = TargetStruct [i].Maintransform.localPosition + (MainBody.forward*50.0f);
+		//TargetStruct[i].OldTargets = TargetStruct[i].Maintransform.localPosition;
 		TargetStruct [i].LerpTimer = 0.0f;
 	}
 
@@ -46,26 +45,25 @@ public class TestParabolamaker : MonoBehaviour {
 		if (TargetStruct [index].LerpTimer < 1.0f) {
 			float height = Mathf.Sin (Mathf.PI * TargetStruct [index].LerpTimer) * 30.0f;
 
-			TargetStruct [index].Maintransform.position = Vector3.Lerp (TargetStruct [index].OldTargets, TargetStruct [index].NewTargets, TargetStruct [index].LerpTimer) + TargetStruct [index].Maintransform.up * height;
+			TargetStruct [index].Maintransform.localPosition = Vector3.Lerp (TargetStruct [index].OldTargets, TargetStruct [index].NewTargets, TargetStruct [index].LerpTimer) + TargetStruct [index].Maintransform.up * height;
 		} else {
 			if (TargetStruct [index].LerpTimer > 1.0f) {
-				TargetStruct [index].Maintransform.position = TargetStruct [index].NewTargets;
+				TargetStruct [index].Maintransform.localPosition = TargetStruct [index].NewTargets;
 			}
 		}
 	}
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		AvPoint = new Vector3(0.0f,640.0f,0.0f);
 		if(noop == true)
 		{
 			for (int i=0;i<4;i++) {
 				ParabolaLerp (i);		
-				AvPoint += TargetStruct[i].Maintransform.transform.position;
-				AvPoint += TargetStruct[i+4].Maintransform.transform.position;
-				TargetStruct [i].LerpTimer += Time.deltaTime*2.0f;
+				AvPoint += TargetStruct[i].Maintransform.transform.localPosition;
+				AvPoint += TargetStruct[i+4].Maintransform.transform.localPosition;
+				TargetStruct [i].LerpTimer += Time.deltaTime*3.0f;
 
-				if (TargetStruct [i].Maintransform.position == TargetStruct [i].NewTargets) {
+				if (TargetStruct [i].Maintransform.localPosition == TargetStruct [i].NewTargets) {
 					noop = false;
 				}
 			}
@@ -74,11 +72,11 @@ public class TestParabolamaker : MonoBehaviour {
 		else{
 			for (int i=4;i<8;i++) {
 				ParabolaLerp (i);			
-				AvPoint += TargetStruct[i].Maintransform.transform.position;
-				AvPoint += TargetStruct[i-4].Maintransform.transform.position;
-				TargetStruct [i].LerpTimer += Time.deltaTime*2.0f;
+				AvPoint += TargetStruct[i].Maintransform.transform.localPosition;
+				AvPoint += TargetStruct[i-4].Maintransform.transform.localPosition;
+				TargetStruct [i].LerpTimer += Time.deltaTime*3.0f;
 
-				if (TargetStruct [i].Maintransform.position == TargetStruct [i].NewTargets) {
+				if (TargetStruct [i].Maintransform.localPosition == TargetStruct [i].NewTargets) {
 					noop = true;
 				}
 			}
@@ -90,8 +88,5 @@ public class TestParabolamaker : MonoBehaviour {
 			}
 
 		}
-
-		AvPoint /= 8;
-		MainBody.position = AvPoint;
 	}
 }

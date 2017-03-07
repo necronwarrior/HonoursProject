@@ -8,14 +8,10 @@ public class IKRigJoint : MonoBehaviour
 
 	public Transform constraintdir ;
 
-	GameObject realdir;
-
 	public Vector3 RotOff;
 	public Vector3 localrot;
 
 	public Quaternion Quat;
-
-	bool once;
 
 	public Vector3 position
 	{
@@ -34,34 +30,14 @@ public class IKRigJoint : MonoBehaviour
 	void Awake()
 	{
 		RotOff = new Vector3 (0,0,0);
-		once = true;
 		Quat = new Quaternion();
-		realdir = new GameObject ();
 
 	}
 
 	public void Straighten(Vector3 Prev) {
 
 
+		transform.LookAt (Prev);
 
-	
-		if(once==true)
-		{
-			realdir.transform.forward = transform.position - Prev;
-
-			realdir.transform.up = Vector3.RotateTowards (realdir.transform.forward, transform.position + Vector3.up, 90.0f, 1.0f);
-			once = false;
-		}
-		realdir.transform.LookAt (Prev);
-		localrot = transform.localRotation.eulerAngles ;
-		transform.localRotation = realdir.transform.rotation;
-
-		//transform.forward = transform.position - Prev;
-		Debug.DrawLine( transform.position, Prev, Color.blue);
-
-	
-		//transform.rotation = ToPrev;
-
-		//transform.Rotate (-RotOff);
 	}
 }

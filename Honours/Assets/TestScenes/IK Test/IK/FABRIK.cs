@@ -60,7 +60,12 @@ public class FABRIK : MonoBehaviour
 	
 		float rootToTargetDist = Vector3.Distance(chain.joints[0].position, chain.target.position);
 		float lambda = 0f;
-		
+
+		for (int i = 1; i<chain.joints.Length;i++)
+		{
+			chain.joints [i].Straighten (chain.joints [i-1].position);
+		}
+
 		// Target unreachable
 		if(rootToTargetDist > chain.length)
 		{
@@ -142,10 +147,7 @@ public class FABRIK : MonoBehaviour
 				tries++;
 			}
 
-			for (int i = 1; i<chain.joints.Length;i++)
-            {
-				chain.joints [i].Straighten (chain.joints [i-1].position);
-            }
+
 		}
 	}
 		
