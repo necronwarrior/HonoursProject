@@ -1,15 +1,15 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TestScenes\TestParabolamaker.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TestScenes\TestHermiteBuilder.cs">
     <Files>
-      <File FileName="Assets\TestScenes\TestHermiteBuilder.cs" Line="12" Column="52" />
-      <File FileName="Assets\TestScenes\TestParabolamaker.cs" Line="31" Column="2" />
-      <File FileName="Assets\Resources\SplineController_CS\SplineController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Resources\SplineController_CS\SplineInterpolator.cs" Line="1" Column="1" />
-      <File FileName="Assets\TestScenes\IK Test\IK\FABRIK.cs" Line="204" Column="26" />
+      <File FileName="Assets\TestScenes\TestHermiteBuilder.cs" Line="30" Column="18" />
+      <File FileName="Assets\TestScenes\TestParabolamaker.cs" Line="1" Column="1" />
+      <File FileName="Assets\Resources\SplineController_CS\SplineController.cs" Line="22" Column="2" />
+      <File FileName="Assets\Resources\SplineController_CS\SplineInterpolator.cs" Line="29" Column="2" />
+      <File FileName="Assets\TestScenes\IK Test\IK\FABRIK.cs" Line="1" Column="1" />
       <File FileName="Assets\Lookatpls.cs" Line="1" Column="1" />
-      <File FileName="Assets\TestScenes\IK Test\IK\IKRigJoint.cs" Line="40" Column="21" />
-      <File FileName="Assets\PointFinder.cs" Line="1" Column="1" />
+      <File FileName="Assets\TestScenes\IK Test\IK\IKRigJoint.cs" Line="1" Column="1" />
+      <File FileName="Assets\PointFinder.cs" Line="26" Column="51" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -23,11 +23,11 @@ public class PointFinder : MonoBehaviour {
 	}
 
 	void Update () {
-		agent.destination = target.position; // update agent destination
+		agent.destination = target.position - Vector3.up; // update agent destination
 		Vector3 normal = GetTerrainNormal();
 		Vector3 direction = agent.steeringTarget - transform.position;
 		direction.y = 0.0f;
-		if(direction.magnitude > 0.1f && normal.magnitude > 0.1f) {
+		if(direction.magnitude > 0.1f || normal.magnitude > 0.1f) {
 			Quaternion qLook = Quaternion.LookRotation(direction, Vector3.up);
 			Quaternion qNorm = Quaternion.FromToRotation(Vector3.up, normal);
 			lookRotation = qNorm * qLook;
