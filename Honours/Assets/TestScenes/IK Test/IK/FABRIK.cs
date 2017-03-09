@@ -14,7 +14,7 @@ public class FABRIK : MonoBehaviour
 	public IKChain myChain;
 	// 15 iterations is average solve time
  	const int Max_iterations = 20;		
-	const float Solve_accuracy = 0.2f; 
+	const float Solve_accuracy = 0.01f; 
 	float[] foo;
 	public int noodle;
 
@@ -97,13 +97,22 @@ public class FABRIK : MonoBehaviour
 					lambda = chain.segmentLengths[i] / Vector3.Distance(chain.joints[i+1].position, chain.joints[i].position);
 					tempos = (1 - lambda) * chain.joints[i+1].position + lambda * chain.joints[i].position;
 
-					//if(isLyingInCone(tempos,chain.joints[i+1].position,chain.joints [i].position, chain.joints[i+1].aperture))
+					Fwd [i] = chain.joints [i].position;
+					if (isLyingInCone (tempos, chain.joints [i-1].position, chain.joints [i].pos, (Mathf.Deg2Rad*chain.joints [i].aperture))) 
 					{
 						chain.joints [i].position = tempos;	
 						Fwd [i] = chain.joints [i].position;
-					}/// else {
-						//chain.joints [i].position = Fwd [i];
-					//}	
+					}else {
+						chain.joints [i].position = Fwd [i];
+						if (noodle == 1) {
+							GameObject doo = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
+							doo.transform.position = chain.joints [i-1].position;
+							doo.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
+							//GameObject voo = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
+							//voo.transform.position = chain.joints [i].position;
+							//voo.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
+						}
+					}	
 					Vector3.Lerp (chain.joints [i + 1].position, chain.joints [i + 1].pos, 1.0f);
 				}
 				
@@ -126,17 +135,24 @@ public class FABRIK : MonoBehaviour
 
 					//doott.transform.position = doo [i];
 					//Debug.Log(doo[i]);
-					if (isLyingInCone (tempos, chain.joints [i].position, (doo [i])*2, (Mathf.Deg2Rad*chain.joints [i].aperture))) {
+					Bwd [i] = chain.joints [i + 1].position;
+					if (isLyingInCone (tempos, chain.joints [i].position, chain.joints [i+1].pos, (Mathf.Deg2Rad*chain.joints [i].aperture))) {
 						
 						chain.joints [i + 1].position =tempos;				
 						Bwd [i] = chain.joints [i + 1].position;
 						debug = Color.blue;
 					} else {
 						chain.joints [i + 1].position = Bwd [i];
-						chain.joints [i + 1].position =tempos;
-						//chain.joints [i + 1].position =tempos;	
-						//GameObject doo = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
-						//doo.transform.position = tempos;
+						//chain.joints [i + 1].position =tempos;
+						//chain.joints [i + 1].position =tempos;
+						if (noodle == 1) {
+							/*GameObject doo = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
+							doo.transform.position = tempos;
+							doo.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
+							GameObject voo = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
+							voo.transform.position = chain.joints [i].position;
+							voo.transform.localScale = new Vector3(0.1f,0.1f,0.1f);*/
+						}
 						debug = Color.red;
 					}
 					Vector3.Lerp (chain.joints [i + 1].position, chain.joints [i + 1].pos, 1.0f);
@@ -155,7 +171,7 @@ public class FABRIK : MonoBehaviour
 		float aperture){
 
 		// This is for our convenience
-		float halfAperture = aperture/2.0f;
+		float halfAperture = aperture;
 
 		// Vector pointing to X point from apex
 		Vector3 apexToXVect = (apex-point);
@@ -181,8 +197,8 @@ public class FABRIK : MonoBehaviour
 		// X is contained in cone only if projection of apexToXVect to axis
 		// is shorter than axis. 
 		// We'll use dotProd() to figure projection length.
-		bool isUnderRoundCap = Vector3.Dot(apexToXVect,axisVect)
-			/axisVect.magnitude
+		bool isUnderRoundCap = //Vector3.Dot(apexToXVect,axisVect)/
+			apexToXVect.magnitude
 			<
 			axisVect.magnitude;
 		return isUnderRoundCap;
@@ -192,9 +208,9 @@ public class FABRIK : MonoBehaviour
 	{
 		if (cones==true && noodle==1)
 		{
-			DebugExtension.DrawCone(noo[0] ,doo[0]*100, Color.white,foo[0]);
-			DebugExtension.DrawCone(noo[1] ,doo[1]*100, Color.cyan,foo[1]);
-			DebugExtension.DrawCone(noo[2] ,doo[2]*100, Color.gray,foo[2]);
+			DebugExtension.DrawCone(noo[0] ,doo[0]*2, Color.white,foo[0]);
+			DebugExtension.DrawCone(noo[1] ,doo[1]*2, Color.cyan,foo[1]);
+			DebugExtension.DrawCone(noo[2] ,doo[2]*2, Color.gray,foo[2]);
 		}
 	}
 }
