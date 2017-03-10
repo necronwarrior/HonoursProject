@@ -8,11 +8,13 @@ public class PointFinder : MonoBehaviour {
 	public Terrain terrain;
 	private NavMeshAgent agent;
 	private Quaternion lookRotation;
+	float lerplook;
 
 	void Start () {
 		agent = GetComponent<NavMeshAgent>();  // cache NavMeshAgent component
 		agent.updateRotation = false;          
 		lookRotation = transform.rotation;     // set original rotation
+		lerplook = 0.0f;
 	}
 
 	Vector3 GetTerrainNormal () {
@@ -27,12 +29,13 @@ public class PointFinder : MonoBehaviour {
 		Vector3 normal = GetTerrainNormal();
 		Vector3 direction = agent.steeringTarget - transform.position;
 		direction.y = 0.0f;
-		if(direction.magnitude > 0.1f || normal.magnitude > 0.1f) {
+		if(direction.magnitude > 0.01f || normal.magnitude > 0.01f) {
 			Quaternion qLook = Quaternion.LookRotation(direction, Vector3.up);
 			Quaternion qNorm = Quaternion.FromToRotation(Vector3.up, normal);
 			lookRotation = qNorm * qLook;
 		}
+
 		// soften the orientation
-		transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime/0.2f);
+		transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime/0.3f);
 	}
 }

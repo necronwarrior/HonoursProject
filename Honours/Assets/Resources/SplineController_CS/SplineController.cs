@@ -43,8 +43,23 @@ public class SplineController : MonoBehaviour
 		}
 	}
 
-	public void UpdateTransforms()
+	public void StartSpline()
 	{
+		mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
+
+		mTransforms = GetTransforms();
+
+		if (HideOnExecute)
+			DisableTransforms();
+
+		if (AutoStart)
+			FollowSpline();
+	}
+
+	public void RestartSpline()
+	{
+		EnableTransforms ();
+
 		mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
 
 		mTransforms = GetTransforms();
@@ -119,6 +134,14 @@ public class SplineController : MonoBehaviour
 		if (SplineRoot != null)
 		{
 			SplineRoot.SetActiveRecursively(false);
+		}
+	}
+
+	void EnableTransforms()
+	{
+		if (SplineRoot != null)
+		{
+			SplineRoot.SetActiveRecursively(true);
 		}
 	}
 
