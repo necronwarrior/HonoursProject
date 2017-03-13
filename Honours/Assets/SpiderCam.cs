@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpiderCam : MonoBehaviour {
 
 	public Transform Spider;
-	Vector3 somePos;
+//	Vector3 somePos;
 	float distance;
 
 
@@ -20,13 +20,12 @@ public class SpiderCam : MonoBehaviour {
 		distance = Vector3.Distance(this.transform.position, Spider.transform.position);
  
 	if(distance !=10) {
- 	Debug.Log(distance);
     distance = 10;
 
 			transform.position = (transform.position - Spider.transform.position).normalized * distance + Spider.transform.position;
   	}
 
-		somePos= Spider.transform.position;
+		//somePos= Spider.transform.position;
 		//transform.RotateAround (somePos, Vector3.up, 20 * Time.deltaTime);
 
 		transform.LookAt (Spider);

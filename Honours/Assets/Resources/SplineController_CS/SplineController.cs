@@ -133,7 +133,7 @@ public class SplineController : MonoBehaviour
 	{
 		if (SplineRoot != null)
 		{
-			SplineRoot.SetActiveRecursively(false);
+			SplineRoot.SetActive(false);
 		}
 	}
 
@@ -141,7 +141,7 @@ public class SplineController : MonoBehaviour
 	{
 		if (SplineRoot != null)
 		{
-			SplineRoot.SetActiveRecursively(true);
+			SplineRoot.SetActive(true);
 		}
 	}
 

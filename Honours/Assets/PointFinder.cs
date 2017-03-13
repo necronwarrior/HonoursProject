@@ -8,13 +8,13 @@ public class PointFinder : MonoBehaviour {
 	public Terrain terrain;
 	private NavMeshAgent agent;
 	private Quaternion lookRotation;
-	float lerplook;
+//	float lerplook;
 
 	void Start () {
 		agent = GetComponent<NavMeshAgent>();  // cache NavMeshAgent component
 		agent.updateRotation = false;          
 		lookRotation = transform.rotation;     // set original rotation
-		lerplook = 0.0f;
+		//lerplook = 0.0f;
 	}
 
 	Vector3 GetTerrainNormal () {
