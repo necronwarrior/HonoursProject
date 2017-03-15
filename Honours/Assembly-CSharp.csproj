@@ -63,6 +63,7 @@
      <Compile Include="Assets\TestScenes\Terrain Test\Terrain\ProceduralTerrain.cs" />
      <Compile Include="Assets\TestScenes\TestHermiteBuilder.cs" />
      <Compile Include="Assets\TestScenes\TestParabolamaker.cs" />
+     <Compile Include="Assets\placementCone.cs" />
      <None Include="Assets\Resources\DebugDrawingExtension\readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity5.5.1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

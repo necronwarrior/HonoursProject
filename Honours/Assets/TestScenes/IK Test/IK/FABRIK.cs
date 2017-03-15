@@ -105,9 +105,9 @@ public class FABRIK : MonoBehaviour
 					}else {
 						chain.joints [i].position = Fwd [i];
 						if (noodle == 1) {
-							GameObject doo = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
-							doo.transform.position = chain.joints [i-1].position;
-							doo.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
+							//GameObject doo = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
+							//doo.transform.position = chain.joints [i-1].position;
+							//doo.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
 							//GameObject voo = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
 							//voo.transform.position = chain.joints [i].position;
 							//voo.transform.localScale = new Vector3(0.1f,0.1f,0.1f);

@@ -20,32 +20,37 @@ public class SplineController : MonoBehaviour
 	SplineInterpolator mSplineInterp;
 	Transform[] mTransforms;
 
+	void Awake()
+	{
+		mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
+	}
+
 	void OnDrawGizmos()
 	{
 		Transform[] trans = GetTransforms();
 		if (trans.Length < 2)
 			return;
 
-		SplineInterpolator interp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
-		SetupSplineInterpolator(interp, trans);
-		interp.StartInterpolation(null, false, WrapMode);
+		//SplineInterpolator interp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
+		//SetupSplineInterpolator(interp, trans);
+		//interp.StartInterpolation(null, false, WrapMode);
 
-
-		Vector3 prevPos = trans[0].position;
-		for (int c = 1; c <= 100; c++)
-		{
-			float currTime = c * Duration / 100;
-			Vector3 currPos = interp.GetHermiteAtTime(currTime);
-			float mag = (currPos-prevPos).magnitude * 2;
-			Gizmos.color = new Color(mag, 0, 0, 1);
-			Gizmos.DrawLine(prevPos, currPos);
-			prevPos = currPos;
+		if (mSplineInterp != null) {
+			Vector3 prevPos = trans [0].position;
+			for (int c = 1; c <= 100; c++) {
+				float currTime = c * Duration / 100;
+				Vector3 currPos = mSplineInterp.GetHermiteAtTime (currTime);
+				float mag = (currPos - prevPos).magnitude * 2;
+				Gizmos.color = new Color (mag, 0, 0, 1);
+				Gizmos.DrawLine (prevPos, currPos);
+				prevPos = currPos;
+			}
 		}
 	}
 
 	public void StartSpline()
 	{
-		mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
+		
 
 		mTransforms = GetTransforms();
 
@@ -60,7 +65,7 @@ public class SplineController : MonoBehaviour
 	{
 		EnableTransforms ();
 
-		mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
+		//mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
 
 		mTransforms = GetTransforms();
 
