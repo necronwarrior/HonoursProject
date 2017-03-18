@@ -41,7 +41,7 @@ public class SplineController : MonoBehaviour
 			Vector3 prevPos = trans [0].position;
 			for (int c = 1; c <= 100; c++) {
 				float currTime = c * Duration / 100;
-				Vector3 currPos = mSplineInterp.GetHermiteAtTime (currTime);
+				Vector3 currPos = interp.GetHermiteAtTime (currTime);
 				float mag = (currPos - prevPos).magnitude * 2;
 				Gizmos.color = new Color (mag, 0, 0, 1);
 				Gizmos.DrawLine (prevPos, currPos);
@@ -158,7 +158,7 @@ public class SplineController : MonoBehaviour
 	/// </summary>
 	public void FollowSpline()
 	{
-		if (mTransforms.Length > 0)
+		if (mTransforms.Length > 1)
 		{
 			SetupSplineInterpolator(mSplineInterp, mTransforms);
 			mSplineInterp.StartInterpolation(null, true, WrapMode);

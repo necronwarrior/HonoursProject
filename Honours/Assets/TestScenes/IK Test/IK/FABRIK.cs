@@ -14,7 +14,7 @@ public class FABRIK : MonoBehaviour
 	public IKChain myChain;
 	// 15 iterations is average solve time
  	const int Max_iterations = 20;		
-	const float Solve_accuracy = 0.01f; 
+	const float Solve_accuracy = 0.001f; 
 	float[] foo;
 	public int noodle;
 
@@ -56,7 +56,7 @@ public class FABRIK : MonoBehaviour
 
 
 
-		if(chain.joints.Length < 2) return;
+		if (chain.joints.Length < 2) return;
 	
 		float rootToTargetDist = Vector3.Distance(chain.joints[0].position, chain.target.position);
 		float lambda = 0f;
@@ -72,7 +72,12 @@ public class FABRIK : MonoBehaviour
 			for (int i = 0; i < chain.joints.Length - 1; i++)
 			{
 				lambda = chain.segmentLengths[i] / Vector3.Distance(chain.joints[i].position, chain.target.position);
-				chain.joints[i+1].position = (1 - lambda) * chain.joints[i].position + lambda * chain.target.position;
+				if (isLyingInCone ((1 - lambda) * chain.joints [i].position + lambda * chain.target.position, chain.joints [i].position, chain.joints [i].pos, (Mathf.Deg2Rad * chain.joints [i].aperture))) {
+
+					chain.joints [i + 1].position = (1 - lambda) * chain.joints [i].position + lambda * chain.target.position;
+				} else {
+				
+				}
 			}
 		}
 		else // Target within reach
@@ -98,20 +103,20 @@ public class FABRIK : MonoBehaviour
 					tempos = (1 - lambda) * chain.joints[i+1].position + lambda * chain.joints[i].position;
 
 					Fwd [i] = chain.joints [i].position;
-					if (isLyingInCone (tempos, chain.joints [i-1].position, chain.joints [i].pos, (Mathf.Deg2Rad*chain.joints [i].aperture))) 
+					if (isLyingInCone (tempos, chain.joints [i-1].position, chain.joints [i-1].pos, (Mathf.Deg2Rad*chain.joints [i].aperture))) 
 					{
 						chain.joints [i].position = tempos;	
 						Fwd [i] = chain.joints [i].position;
 					}else {
 						chain.joints [i].position = Fwd [i];
-						if (noodle == 1) {
+					//	if (noodle == 1) {
 							//GameObject doo = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
 							//doo.transform.position = chain.joints [i-1].position;
 							//doo.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
 							//GameObject voo = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
 							//voo.transform.position = chain.joints [i].position;
 							//voo.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
-						}
+						//}
 					}	
 					Vector3.Lerp (chain.joints [i + 1].position, chain.joints [i + 1].pos, 1.0f);
 				}
@@ -136,7 +141,7 @@ public class FABRIK : MonoBehaviour
 					//doott.transform.position = doo [i];
 					//Debug.Log(doo[i]);
 					Bwd [i] = chain.joints [i + 1].position;
-					if (isLyingInCone (tempos, chain.joints [i].position, chain.joints [i+1].pos, (Mathf.Deg2Rad*chain.joints [i].aperture))) {
+					if (isLyingInCone (tempos, chain.joints [i].position, chain.joints [i].pos, (Mathf.Deg2Rad*chain.joints [i].aperture))) {
 						
 						chain.joints [i + 1].position =tempos;				
 						Bwd [i] = chain.joints [i + 1].position;

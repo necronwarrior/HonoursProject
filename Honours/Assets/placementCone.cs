@@ -20,9 +20,9 @@ public class placementCone : MonoBehaviour {
 
 			for (int i = 0; i < 10; i++) {
 				for (int j = 0; j <= i; j++) {
-					Debug.DrawRay (Vector3.Lerp(transform.position,(new Vector3 (ConeDirection.x,0.0f, ConeDirection.y)),i*0.1f), 
+					Debug.DrawRay (Vector3.Lerp(transform.position,(new Vector3 ((transform.position.x +ConeDirection.x)*-1,transform.position.y,(transform.position.z+ ConeDirection.y)*-1)),i*0.1f), 
 						(new Vector3 (ConeDirection.x * Mathf.Cos (90.0f), 0.0f, ConeDirection.y * Mathf.Sin (90.0f)).normalized) * -0.1f * j, Color.yellow, 100.0f);
-					Debug.DrawRay (Vector3.Lerp(transform.position,(new Vector3 (ConeDirection.x,0.0f, ConeDirection.y)),i*0.1f), 
+					Debug.DrawRay (Vector3.Lerp(transform.position,(new Vector3 (transform.position.x +ConeDirection.x,transform.position.y, transform.position.z +ConeDirection.y)),i*0.1f), 
 						(new Vector3 (ConeDirection.x * Mathf.Cos (-90.0f), 0.0f, ConeDirection.y * Mathf.Sin (-90.0f)).normalized) * -0.1f * j, Color.red, 100.0f);
 				}
 			
