@@ -22,7 +22,7 @@ public class SplineController : MonoBehaviour
 
 	void Awake()
 	{
-		mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
+		
 	}
 
 	void OnDrawGizmos()
@@ -31,11 +31,13 @@ public class SplineController : MonoBehaviour
 		if (trans.Length < 2)
 			return;
 
-		//SplineInterpolator interp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
-		//SetupSplineInterpolator(interp, trans);
-		//interp.StartInterpolation(null, false, WrapMode);
+		//if (interp == null) {
+			SplineInterpolator interp = GetComponent (typeof(SplineInterpolator)) as SplineInterpolator;
+			SetupSplineInterpolator (interp, trans);
+			interp.StartInterpolation (null, false, WrapMode);
+		//}
 
-		if (mSplineInterp != null) {
+		if (interp != null) {
 			Vector3 prevPos = trans [0].position;
 			for (int c = 1; c <= 100; c++) {
 				float currTime = c * Duration / 100;
@@ -50,7 +52,7 @@ public class SplineController : MonoBehaviour
 
 	public void StartSpline()
 	{
-		
+		mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
 
 		mTransforms = GetTransforms();
 
@@ -65,7 +67,7 @@ public class SplineController : MonoBehaviour
 	{
 		EnableTransforms ();
 
-		//mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
+		mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
 
 		mTransforms = GetTransforms();
 
