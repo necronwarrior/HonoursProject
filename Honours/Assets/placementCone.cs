@@ -40,13 +40,12 @@ public class placementCone : MonoBehaviour {
 
 			for (int i = 0; i < 10; i++) {
 				for (int j = 5; j <= i; j++) {
-					currSection = new Vector3 (transform.position.x + (ConeDirection.x * -0.1f * i), transform.position.y, transform.position.z + (ConeDirection.y * -0.1f * i));
+					currSection = new Vector3 (transform.position.x + (ConeDirection.x * -0.1f * i), transform.position.y+15.0f, transform.position.z + (ConeDirection.y * -0.1f * i));
 					right = Vector3.Cross (((new Vector3 (ConeDirection.x, 0.0f, ConeDirection.y)) * -1), Vector3.up.normalized);
 
 					Debug.DrawRay (currSection, 
 						(right * 0.1f * j), Color.yellow, 100.0f);
 					Debug.DrawRay (currSection + (right * 0.1f * j), Vector3.down*100.0f, Color.black, 100.0f);
-					RaycastHit pathinfo;
 
 					Debug.DrawRay (currSection, 
 						(right * -0.1f * j), Color.red, 100.0f);
