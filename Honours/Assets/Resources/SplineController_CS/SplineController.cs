@@ -63,11 +63,17 @@ public class SplineController : MonoBehaviour
 			FollowSpline();
 	}
 
-	public void RestartSpline()
+	public void RestartSpline(float newDuration)
 	{
+		
+
 		EnableTransforms ();
 
 		mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;
+
+		mSplineInterp.Reset();
+
+		Duration = newDuration;
 
 		mTransforms = GetTransforms();
 

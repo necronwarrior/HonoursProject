@@ -38,8 +38,8 @@ public class placementCone : MonoBehaviour {
 			ConeDirection.Normalize ();
 			ConeDirection *= 3.0f;
 
-			for (int i = 0; i < 10; i++) {
-				for (int j = 5; j <= i; j++) {
+			for (int i = 4; i < 10; i++) {
+				for (int j = 0; j <= i-2; j++) {
 					currSection = new Vector3 (transform.position.x + (ConeDirection.x * -0.1f * i), transform.position.y+15.0f, transform.position.z + (ConeDirection.y * -0.1f * i));
 					right = Vector3.Cross (((new Vector3 (ConeDirection.x, 0.0f, ConeDirection.y)) * -1), Vector3.up.normalized);
 
@@ -77,7 +77,7 @@ public class placementCone : MonoBehaviour {
 			ConeDirection *= 3.0f;
 
 			for (int i = 0; i < 10; i++) {
-				for (int j = 5; j <= i; j++) {
+				for (int j = 4; j <= i-2; j++) {
 					currSection = new Vector3 (transform.position.x + (ConeDirection.x * -0.1f * i), transform.position.y, transform.position.z + (ConeDirection.y * -0.1f * i));
 					right = Vector3.Cross (((new Vector3 (ConeDirection.x, 0.0f, ConeDirection.y)) * -1), Vector3.up.normalized);
 
