@@ -62,14 +62,16 @@ public class placementCone : MonoBehaviour {
 	void Update () {
 		if (boop) {
 			GameObject GO = GameObject.CreatePrimitive (PrimitiveType.Cube);
-			GO.transform.position = Checkpoint ();
+			//GO.transform.position = Checkpoint ();
 			Pathlist.Clear ();
 			boop = false;
 		}
 	}
 
-	public Vector3 Checkpoint()
+	public List<Vector3> Checkpoint()
 	{
+		List<Vector3> PointPasser;
+		PointPasser = new List<Vector3>(0);
 		Direction = GetComponent<IKRigJoint> ().pos;
 
 			ConeDirection = new Vector2 (transform.position.x - Direction.x, transform.position.z - Direction.z);
@@ -102,7 +104,8 @@ public class placementCone : MonoBehaviour {
 					lowest = p;
 				}
 			}
-
-		return Pathlist[lowest].point;
+		PointPasser.Add (transform.position);
+		PointPasser.Add (Pathlist[lowest].point);
+		return PointPasser;
 	}
 }

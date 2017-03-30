@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Gaittimertiming.cs" />
     <Compile Include="Assets\Lookatpls.cs" />
     <Compile Include="Assets\PointFinder.cs" />
     <Compile Include="Assets\Resources\DebugDrawingExtension\DebugExtension.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Assets\TestScenes\Terrain Test\Terrain\ProceduralTerrain.cs" />
     <Compile Include="Assets\TestScenes\TestHermiteBuilder.cs" />
     <Compile Include="Assets\TestScenes\TestParabolamaker.cs" />
+    <Compile Include="Assets\placementCone.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\DebugDrawingExtension\readme.txt" />
