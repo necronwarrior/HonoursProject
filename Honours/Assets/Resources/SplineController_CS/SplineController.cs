@@ -65,8 +65,6 @@ public class SplineController : MonoBehaviour
 
 	public void RestartSpline(float newDuration)
 	{
-		
-
 		EnableTransforms ();
 
 		mSplineInterp = GetComponent(typeof(SplineInterpolator)) as SplineInterpolator;

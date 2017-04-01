@@ -104,7 +104,7 @@ public class placementCone : MonoBehaviour {
 					lowest = p;
 				}
 			}
-		PointPasser.Add (transform.position);
+		//PointPasser.Add (transform.position);
 		PointPasser.Add (Pathlist[lowest].point);
 		return PointPasser;
 	}
