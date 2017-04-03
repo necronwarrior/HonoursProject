@@ -7,6 +7,7 @@ public class placementCone : MonoBehaviour {
 	Vector3 Direction, currSection, right;
 	Vector2 ConeDirection;
 	public Transform target;
+	public Transform FootTarget;
 
 	public struct pathpoint
 	{
@@ -104,6 +105,9 @@ public class placementCone : MonoBehaviour {
 					lowest = p;
 				}
 			}
+
+		Vector3 midpoint = new Vector3 ((FootTarget.position.x+Pathlist[lowest].point.x)/2,((FootTarget.position.y+Pathlist[lowest].point.y)/2)+2.0f,(FootTarget.position.z+Pathlist[lowest].point.z)/2);
+		PointPasser.Add (midpoint);
 		//PointPasser.Add (transform.position);
 		PointPasser.Add (Pathlist[lowest].point);
 		return PointPasser;

@@ -1,22 +1,22 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TestScenes\TestHermiteBuilder.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\placementCone.cs">
     <Files>
-      <File FileName="Assets\TestScenes\TestHermiteBuilder.cs" Line="130" Column="63" />
-      <File FileName="Assets\Resources\SplineController_CS\SplineController.cs" Line="1" Column="1" />
+      <File FileName="Assets\TestScenes\TestHermiteBuilder.cs" Line="85" Column="1" />
+      <File FileName="Assets\Resources\SplineController_CS\SplineController.cs" Line="81" Column="17" />
       <File FileName="Assets\Resources\SplineController_CS\SplineInterpolator.cs" Line="1" Column="1" />
       <File FileName="Assets\PointFinder.cs" Line="1" Column="1" />
       <File FileName="Assets\SpiderCam.cs" Line="1" Column="1" />
       <File FileName="Assets\TestScenes\IK Test\IK\FABRIK.cs" Line="1" Column="1" />
       <File FileName="Assets\TestScenes\IK Test\IK\IKChain.cs" Line="1" Column="1" />
-      <File FileName="Assets\placementCone.cs" Line="1" Column="1" />
+      <File FileName="Assets\placementCone.cs" Line="109" Column="140" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint enabled="false" conditionExpression="noodle == 1" file="M:\4th_Year\HonoursProject\Honours\Assets\TestScenes\IK Test\IK\FABRIK.cs" line="205" column="1" />
       <Breakpoint enabled="false" file="M:\4th_Year\HonoursProject\Honours\Assets\Resources\SplineController_CS\SplineInterpolator.cs" line="62" column="1" />
-      <Breakpoint file="M:\4th_Year\HonoursProject\Honours\Assets\TestScenes\TestHermiteBuilder.cs" line="91" column="1" />
+      <Breakpoint file="M:\4th_Year\HonoursProject\Honours\Assets\TestScenes\TestHermiteBuilder.cs" line="85" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
