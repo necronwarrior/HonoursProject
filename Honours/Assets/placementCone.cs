@@ -29,28 +29,38 @@ public class placementCone : MonoBehaviour {
 	public bool bloop = false;
 	public bool boop = false;
 
+	int RowMin, RowMax;
+
+	float sections ,negsection;
+
 	// Use this for initialization
 	void Start () {
+		RowMin = 8;
+		RowMax = 20;
+		sections = (float)(1.0f / RowMax);
+		negsection = -1 * (float)(1.0f / RowMax);
 		Pathlist = new List<pathpoint>();
 		Direction = GetComponent<IKRigJoint> ().pos;
 
 		if (bloop) {
 			ConeDirection = new Vector2 (transform.position.x - Direction.x, transform.position.z - Direction.z);
 			ConeDirection.Normalize ();
-			ConeDirection *= 3.0f;
+			ConeDirection *= 2.0f; //distance
 
-			for (int i = 4; i < 10; i++) {
-				for (int j = 0; j <= i-2; j++) {
-					currSection = new Vector3 (transform.position.x + (ConeDirection.x * -0.1f * i), transform.position.y+15.0f, transform.position.z + (ConeDirection.y * -0.1f * i));
+
+
+			for (int Rows = RowMin; Rows < RowMax; Rows++) {
+				for (int Columns = 0; Columns <= Rows-2; Columns++) {
+					currSection = new Vector3 (transform.position.x + (ConeDirection.x * negsection * Rows), transform.position.y+15.0f, transform.position.z + (ConeDirection.y * negsection * Rows));
 					right = Vector3.Cross (((new Vector3 (ConeDirection.x, 0.0f, ConeDirection.y)) * -1), Vector3.up.normalized);
 
 					Debug.DrawRay (currSection, 
-						(right * 0.1f * j), Color.yellow, 100.0f);
-					Debug.DrawRay (currSection + (right * 0.1f * j), Vector3.down*100.0f, Color.black, 100.0f);
+						(right * sections * Columns), Color.yellow, 100.0f);
+					Debug.DrawRay (currSection + (right * sections * Columns), Vector3.down*100.0f, Color.black, 100.0f);
 
 					Debug.DrawRay (currSection, 
-						(right * -0.1f * j), Color.red, 100.0f);
-					Debug.DrawRay (currSection + (right * -0.1f * j), Vector3.down*100.0f, Color.black, 100.0f);
+						(right * negsection * Columns), Color.red, 100.0f);
+					Debug.DrawRay (currSection + (right * negsection * Columns), Vector3.down*100.0f, Color.black, 100.0f);
 
 				}
 			
@@ -77,20 +87,20 @@ public class placementCone : MonoBehaviour {
 
 			ConeDirection = new Vector2 (transform.position.x - Direction.x, transform.position.z - Direction.z);
 			ConeDirection.Normalize ();
-			ConeDirection *= 3.0f;
+			ConeDirection *= 2.0f;
 
-			for (int i = 0; i < 10; i++) {
-				for (int j = 4; j <= i-2; j++) {
-					currSection = new Vector3 (transform.position.x + (ConeDirection.x * -0.1f * i), transform.position.y, transform.position.z + (ConeDirection.y * -0.1f * i));
+		for (int Rows = RowMin; Rows < RowMax; Rows++) {
+			for (int Columns = 0; Columns <= Rows-2; Columns++) {
+				currSection = new Vector3 (transform.position.x + (ConeDirection.x * negsection * Rows), transform.position.y, transform.position.z + (ConeDirection.y * negsection * Rows));
 					right = Vector3.Cross (((new Vector3 (ConeDirection.x, 0.0f, ConeDirection.y)) * -1), Vector3.up.normalized);
 
 					RaycastHit pathinfo;
-					if(Physics.Raycast(currSection + (right * 0.1f * j),Vector3.down,out pathinfo,50.0f))
+				if(Physics.Raycast(currSection + (right * sections * Columns),Vector3.down,out pathinfo,50.0f))
 					{
 					Pathlist.Add (new pathpoint(pathinfo.point, target.position));
 					}
 
-					if(Physics.Raycast(currSection + (right * -0.1f * j),Vector3.down,out pathinfo,50.0f))
+				if(Physics.Raycast(currSection + (right * negsection * Columns),Vector3.down,out pathinfo,50.0f))
 					{
 					Pathlist.Add (new pathpoint(pathinfo.point, target.position));
 					}

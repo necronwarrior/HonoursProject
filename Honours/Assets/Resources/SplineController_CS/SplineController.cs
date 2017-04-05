@@ -126,10 +126,10 @@ public class SplineController : MonoBehaviour
 			List<Transform> transforms = components.ConvertAll(c => (Transform)c);
 
 			transforms.Remove(SplineRoot.transform);
-			transforms.Sort(delegate(Transform a, Transform b)
+			/*transforms.Sort(delegate(Transform a, Transform b)
 			{
 				return a.name.CompareTo(b.name);
-			});
+			});*/
 
 			return transforms.ToArray();
 		}

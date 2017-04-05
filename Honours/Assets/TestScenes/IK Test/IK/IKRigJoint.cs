@@ -25,10 +25,13 @@ public class IKRigJoint : MonoBehaviour
 		set{ constraintdir.position = value; }
 	}
 
-	public float aperture =45; 
+	public float aperture =360; 
 
 	void Awake()
 	{
+		if (constraintdir.GetComponent<MeshRenderer> ()) {
+			constraintdir.GetComponent<MeshRenderer> ().enabled = false;
+		}
 		RotOff = new Vector3 (0,0,0);
 		Quat = new Quaternion();
 
