@@ -97,12 +97,16 @@ public class placementCone : MonoBehaviour {
 					RaycastHit pathinfo;
 				if(Physics.Raycast(currSection + (right * sections * Columns),Vector3.down,out pathinfo,50.0f))
 					{
-					Pathlist.Add (new pathpoint(pathinfo.point, target.position));
+					if (pathinfo.collider.tag != "Self") {
+							Pathlist.Add (new pathpoint (pathinfo.point, target.position));
+						}
 					}
 
 				if(Physics.Raycast(currSection + (right * negsection * Columns),Vector3.down,out pathinfo,50.0f))
 					{
-					Pathlist.Add (new pathpoint(pathinfo.point, target.position));
+					if (pathinfo.collider.tag !=  "Self") {
+						Pathlist.Add (new pathpoint (pathinfo.point, target.position));
+						}
 					}
 				}
 
@@ -120,6 +124,11 @@ public class placementCone : MonoBehaviour {
 		PointPasser.Add (midpoint);
 		//PointPasser.Add (transform.position);
 		PointPasser.Add (Pathlist[lowest].point);
+
+		for (int h = 0; h < PointPasser.Count; ++h) 
+		{
+			PointPasser [h].Set(PointPasser [h].x,PointPasser [h].y+1.0f,PointPasser [h].z);
+		}
 		return PointPasser;
 	}
 }

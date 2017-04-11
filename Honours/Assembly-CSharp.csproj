@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Animspeed.cs" />
      <Compile Include="Assets\Gaittimertiming.cs" />
      <Compile Include="Assets\Lookatpls.cs" />
      <Compile Include="Assets\PointFinder.cs" />
