@@ -103,21 +103,14 @@ public class FABRIK : MonoBehaviour
 					tempos = (1 - lambda) * chain.joints[i+1].position + lambda * chain.joints[i].position;
 
 					Fwd [i] = chain.joints [i].position;
-					//if (isLyingInCone (tempos, chain.joints [i-1].position, chain.joints [i-1].pos, (Mathf.Deg2Rad*chain.joints [i].aperture))) 
+					if (isLyingInCone (tempos, chain.joints [i-1].position, chain.joints [i-1].pos, (Mathf.Deg2Rad*chain.joints [i].aperture))) 
 					{
 						chain.joints [i].position = tempos;	
 						Fwd [i] = chain.joints [i].position;
-					}//else {
-						//chain.joints [i].position = Fwd [i];
-					//	if (noodle == 1) {
-							//GameObject doo = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
-							//doo.transform.position = chain.joints [i-1].position;
-							//doo.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
-							//GameObject voo = (GameObject)Instantiate (GameObject.CreatePrimitive (PrimitiveType.Cube));
-							//voo.transform.position = chain.joints [i].position;
-							//voo.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
-						//}
-					//}	
+					}else {
+						//determine the new point added with teh distance
+						chain.joints [i].position = Fwd [i];
+					}	
 					Vector3.Lerp (chain.joints [i + 1].position, chain.joints [i + 1].pos, 1.0f);
 				}
 				
@@ -141,18 +134,17 @@ public class FABRIK : MonoBehaviour
 					//doott.transform.position = doo [i];
 					//Debug.Log(doo[i]);
 					Bwd [i] = chain.joints [i + 1].position;
-					//if (isLyingInCone (tempos, chain.joints [i].position, chain.joints [i].pos, (Mathf.Deg2Rad*chain.joints [i].aperture))) {
+					if (isLyingInCone (tempos, chain.joints [i].position, chain.joints [i].pos, (Mathf.Deg2Rad*chain.joints [i].aperture))) {
 						
 						chain.joints [i + 1].position =tempos;				
 						Bwd [i] = chain.joints [i + 1].position;
 						debug = Color.blue;
-					//} else {
-						//chain.joints [i + 1].position = Bwd [i];
-						//chain.joints [i + 1].position =tempos;
+					} else {
+						chain.joints [i + 1].position = Bwd [i];
 						//chain.joints [i + 1].position =tempos;
 
 						debug = Color.red;
-					//}
+					}
 					Vector3.Lerp (chain.joints [i + 1].position, chain.joints [i + 1].pos, 1.0f);
 				}
 
