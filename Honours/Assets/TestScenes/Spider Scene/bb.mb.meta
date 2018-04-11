@@ -1,0 +1,220 @@
+fileFormatVersion: 2
+guid: 28b1952fe1dd45c4094c0e89b9cefff2
+timeCreated: 1486032372
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Box01
+    100004: Box02
+    100006: Box03
+    100008: Box04
+    100010: Box05
+    100012: Box06
+    100014: Box07
+    100016: Box08
+    100018: Box09
+    100020: Box10
+    100022: Box11
+    100024: Box12
+    100026: Box13
+    100028: Box16
+    100030: Box17
+    100032: Box18
+    100034: Box19
+    100036: Box20
+    100038: Box21
+    100040: Box22
+    100042: Box23
+    100044: Box24
+    100046: Box25
+    100048: Box26
+    100050: Box27
+    100052: Box28
+    100054: Box29
+    100056: Box30
+    100058: Box31
+    100060: Box32
+    100062: Box33
+    100064: Box34
+    100066: Box35
+    100068: Box36
+    100070: Box37
+    100072: Box38
+    100074: Dummy01
+    100076: Dummy02
+    100078: Dummy03
+    100080: Dummy04
+    100082: Dummy07
+    100084: Dummy08
+    100086: Dummy09
+    100088: Dummy10
+    100090: Dummy11
+    100092: Dummy12
+    100094: Dummy13
+    100096: Dummy14
+    100098: Dummy15
+    100100: Dummy16
+    100102: Dummy17
+    100104: Dummy18
+    100106: Dummy19
+    100108: IK Chain01
+    100110: IK Chain02
+    100112: IK Chain03
+    100114: IK Chain04
+    100116: IK Chain05
+    100118: IK Chain06
+    100120: IK Chain07
+    100122: IK Chain08
+    100124: IK Chain09
+    100126: IK Chain10
+    100128: IK Chain11
+    100130: IK Chain12
+    100132: IK Chain13
+    100134: IK Chain14
+    100136: IK Chain15
+    100138: IK Chain16
+    100140: Spider01
+    400000: //RootNode
+    400002: Box01
+    400004: Box02
+    400006: Box03
+    400008: Box04
+    400010: Box05
+    400012: Box06
+    400014: Box07
+    400016: Box08
+    400018: Box09
+    400020: Box10
+    400022: Box11
+    400024: Box12
+    400026: Box13
+    400028: Box16
+    400030: Box17
+    400032: Box18
+    400034: Box19
+    400036: Box20
+    400038: Box21
+    400040: Box22
+    400042: Box23
+    400044: Box24
+    400046: Box25
+    400048: Box26
+    400050: Box27
+    400052: Box28
+    400054: Box29
+    400056: Box30
+    400058: Box31
+    400060: Box32
+    400062: Box33
+    400064: Box34
+    400066: Box35
+    400068: Box36
+    400070: Box37
+    400072: Box38
+    400074: Dummy01
+    400076: Dummy02
+    400078: Dummy03
+    400080: Dummy04
+    400082: Dummy07
+    400084: Dummy08
+    400086: Dummy09
+    400088: Dummy10
+    400090: Dummy11
+    400092: Dummy12
+    400094: Dummy13
+    400096: Dummy14
+    400098: Dummy15
+    400100: Dummy16
+    400102: Dummy17
+    400104: Dummy18
+    400106: Dummy19
+    400108: IK Chain01
+    400110: IK Chain02
+    400112: IK Chain03
+    400114: IK Chain04
+    400116: IK Chain05
+    400118: IK Chain06
+    400120: IK Chain07
+    400122: IK Chain08
+    400124: IK Chain09
+    400126: IK Chain10
+    400128: IK Chain11
+    400130: IK Chain12
+    400132: IK Chain13
+    400134: IK Chain14
+    400136: IK Chain15
+    400138: IK Chain16
+    400140: Spider01
+    2300000: Box04
+    3300000: Box04
+    4300000: Spider01
+    4300002: Box04
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Spider01
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

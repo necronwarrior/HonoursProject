@@ -40,3 +40,13 @@ M:\4th_Year\HonoursProject\Honours\Temp\bin\Debug\UnityEngine.Networking.xml
 M:\4th_Year\HonoursProject\Honours\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 M:\4th_Year\HonoursProject\Honours\obj\Debug\Assembly-CSharp.dll
 M:\4th_Year\HonoursProject\Honours\obj\Debug\Assembly-CSharp.pdb
+M:\4th_Year\HonoursProject\Honours\Temp\bin\Debug\UnityEditor.iOS.Extensions.Common.dll
+M:\4th_Year\HonoursProject\Honours\Temp\bin\Debug\UnityEditor.iOS.Extensions.Xcode.dll
+M:\4th_Year\HonoursProject\Honours\Temp\bin\Debug\UnityEngine.Analytics.dll
+M:\4th_Year\HonoursProject\Honours\Temp\bin\Debug\UnityEngine.HoloLens.dll
+M:\4th_Year\HonoursProject\Honours\Temp\bin\Debug\UnityEngine.PlaymodeTestsRunner.dll
+M:\4th_Year\HonoursProject\Honours\Temp\bin\Debug\UnityEngine.VR.dll
+M:\4th_Year\HonoursProject\Honours\Temp\bin\Debug\UnityEngine.PlaymodeTestsRunner.xml
+M:\4th_Year\HonoursProject\Honours\Temp\bin\Debug\UnityEngine.Analytics.xml
+M:\4th_Year\HonoursProject\Honours\Temp\bin\Debug\UnityEngine.HoloLens.xml
+M:\4th_Year\HonoursProject\Honours\Temp\bin\Debug\UnityEngine.VR.xml
